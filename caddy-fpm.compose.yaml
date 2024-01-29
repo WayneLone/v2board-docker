@@ -1,0 +1,32 @@
+services:
+  v2board:
+    image: vkarz/v2board:caddy-fpm-alpine-1.7.4
+    container_name: v2board
+    restart: unless-stopped
+    volumes:
+      - ~/v2board/Caddyfile:/etc/caddy/Caddyfile
+    ports:
+      - "80:80"
+      - "443:443"
+    depends_on:
+      - redis
+      - mysql
+
+  redis:
+    image: redis:7.2.4
+    container_name: redis
+    restart: unless-stopped
+    command: redis-server /etc/redis/redis.conf
+    volumes:
+      - ~/redis/data:/data
+      - ~/redis/redis.conf:/etc/redis/redis.conf
+
+  mysql:
+    image: mysql:8.3.0
+    container_name: mysql
+    restart: unless-stopped
+    environment:
+      - MYSQL_ROOT_PASSWORD=mysql123.
+    volumes:
+      - ~/mysql/conf:/etc/mysql/conf.d
+      - ~/mysql/data:/var/lib/mysql

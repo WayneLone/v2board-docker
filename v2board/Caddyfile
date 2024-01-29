@@ -1,0 +1,8 @@
+demo.com {
+  root * /var/www/html/v2board/public
+  php_fastcgi 127.0.0.1:9000 {
+    root /var/www/html/v2board/public
+  }
+  file_server
+  encode gzip
+}
