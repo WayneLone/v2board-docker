@@ -15,7 +15,7 @@ jobs:
 
     - name: Download v2board
       run: |
-        curl -O https://github.com/v2board/v2board/archive/refs/tags/1.7.4.zip
+        curl -LJO https://github.com/v2board/v2board/archive/refs/tags/1.7.4.zip
         unzip v2board-1.7.4.zip
         mv v2board-1.7.4/* ./docker/fpm/*
         sed -i "s/REDIS_HOST=127.0.0.1/REDIS_HOST=redis/" ./docker/fpm/.env.example
