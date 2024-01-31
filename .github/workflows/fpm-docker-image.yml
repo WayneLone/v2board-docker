@@ -16,6 +16,6 @@ jobs:
     - name: Download v2board
       run: |
         curl -LJO https://github.com/v2board/v2board/archive/refs/tags/1.7.4.zip
-        unzip v2board-1.7.4.zip
-        cp -r v2board-1.7.4/ ./docker/fpm/
+        unzip v2board-1.7.4.zip > /dev/null 2>&1
+        cp -r v2board-1.7.4/* ./docker/fpm/
         ls -l ./docker/fpm
