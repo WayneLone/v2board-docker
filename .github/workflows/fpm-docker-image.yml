@@ -17,7 +17,7 @@ jobs:
       run: |
         curl -LJO https://github.com/v2board/v2board/archive/refs/tags/1.7.4.zip
         unzip v2board-1.7.4.zip > /dev/null 2>&1
-        cp -r v2board-1.7.4/* ./docker/fpm/
+        cp -ar v2board-1.7.4/. ./docker/fpm/
         sed -i "s/REDIS_HOST=127.0.0.1/REDIS_HOST=redis/" ./docker/fpm/.env.example
         sed -i "s/REDIS_PASSWORD=null/REDIS_PASSWORD=redis123./" ./docker/fpm/.env.example
 
