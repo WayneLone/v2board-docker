@@ -20,6 +20,7 @@ jobs:
         mv v2board-1.7.4/* ./docker/fpm/*
         sed -i "s/REDIS_HOST=127.0.0.1/REDIS_HOST=redis/" ./docker/fpm/.env.example
         sed -i "s/REDIS_PASSWORD=null/REDIS_PASSWORD=redis123./" ./docker/fpm/.env.example
+        pwd
 
     - name: Set up QEMU
       uses: docker/setup-qemu-action@v3
