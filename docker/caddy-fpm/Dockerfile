@@ -33,7 +33,7 @@ RUN curl --silent --show-error --fail --location \
     && /usr/bin/caddy version
 
 COPY ./Caddyfile /etc/caddy/Caddyfile
-COPY ./supervisor-caddy.conf /etc/supervisor/supervisord.conf
+COPY ./supervisor.conf /etc/supervisor/supervisord.conf
 COPY ./crontab.txt /var/crontab/v2board.txt
 RUN /usr/bin/crontab /var/crontab/v2board.txt
 

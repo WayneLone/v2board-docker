@@ -1,5 +1,10 @@
 # v2board-docker
 
+
+| FPM | Caddy-FPM | XrayR |
+|---|-----|---|
+| [![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/waynelone/v2board-docker/fpm-docker-image.yml)](https://github.com/WayneLone/v2board-docker/actions/workflows/fpm-docker-image.yml) | [![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/waynelone/v2board-docker/caddy-fpm-docker-image.yml)](https://github.com/WayneLone/v2board-docker/actions/workflows/caddy-fpm-docker-image.yml) | [![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/waynelone/v2board-docker/xrayr-docker-image.yml)](https://github.com/WayneLone/v2board-docker/actions/workflows/xrayr-docker-image.yml) |
+
 鉴于找到的 docker 镜像都像开盲盒一样，于是就自己搞了一份。镜像是基于 [v2board](https://github.com/v2board/v2board) 构建的，镜像内部使用 supervisor 作为主进程，启动了 crontab、队列、fpm。
 
 ## 前言
