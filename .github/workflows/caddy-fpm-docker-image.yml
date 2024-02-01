@@ -15,11 +15,10 @@ jobs:
 
     - name: Download v2board
       run: |
-        curl -LJO https://github.com/v2board/v2board/archive/refs/tags/1.7.4.zip
-        unzip v2board-1.7.4.zip > /dev/null 2>&1
-        cp -ar v2board-1.7.4/. ./docker/caddy-fpm/
-        sed -i "s/REDIS_HOST=127.0.0.1/REDIS_HOST=redis/" ./docker/caddy-fpm/.env.example
-        sed -i "s/REDIS_PASSWORD=null/REDIS_PASSWORD=redis123./" ./docker/caddy-fpm/.env.example
+        git clone https://github.com/wyx2685/v2board.git ./nv2board
+        cp -ar ./docker/caddy-fpm/. ./nv2board/
+        sed -i "s/REDIS_HOST=127.0.0.1/REDIS_HOST=redis/" ./nv2board/.env.example
+        sed -i "s/REDIS_PASSWORD=null/REDIS_PASSWORD=redis123./" ./nv2board/.env.example
 
     - name: Set up QEMU
       uses: docker/setup-qemu-action@v3
@@ -36,8 +35,8 @@ jobs:
     - name: Build and push
       uses: docker/build-push-action@v5
       with:
-        context: ./docker/caddy-fpm
+        context: ./nv2board
         platforms: linux/amd64
         push: true
-        file: ./docker/caddy-fpm/Dockerfile
+        file: ./nv2board/Dockerfile
         tags: vkarz/v2board:${{ github.event.inputs.tags }}
