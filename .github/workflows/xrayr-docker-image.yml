@@ -16,7 +16,8 @@ jobs:
 
     - name: Add Configuration Files
       run: |
-        sed "15a COPY ./release/config/ /etc/XrayR/" ./Dockerfile
+        sed -i "15a COPY ./release/config/ /etc/XrayR/" ./Dockerfile
+        sed -i "16a COPY ./release/config/config.yml.example /etc/XrayR/.config.yml" ./Dockerfile
 
     - name: Set up QEMU
       uses: docker/setup-qemu-action@v3
