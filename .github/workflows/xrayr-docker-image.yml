@@ -14,6 +14,10 @@ jobs:
       with:
         repository: wyx2685/XrayR
 
+    - name: Add Configuration Files
+      run: |
+        sed "15a COPY ./release/config/ /etc/XrayR/" ./Dockerfile
+
     - name: Set up QEMU
       uses: docker/setup-qemu-action@v3
 
