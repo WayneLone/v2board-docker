@@ -1,7 +1,10 @@
 name: XrayR Docker Image CI
 
-on: workflow_dispatch
-
+on:
+  workflow_dispatch:
+    inputs:
+      tags:
+        descrption: 'input the docker tag'
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -10,14 +13,6 @@ jobs:
       uses: actions/checkout@v4
       with:
         repository: wyx2685/XrayR
-
-    - name: Docker meta
-      id: meta
-      uses: docker/metadata-action@v4
-      with:
-        images: vkarz/xrayr
-        tags: |
-          type=sha
 
     - name: Set up QEMU
       uses: docker/setup-qemu-action@v3
@@ -38,4 +33,4 @@ jobs:
         platforms: linux/amd64
         push: true
         file: ./Dockerfile
-        tags: ${{ steps.meta.outputs.tags }}
+        tags: vkarz/xrayr:${{ github.event.inputs.tags }}
