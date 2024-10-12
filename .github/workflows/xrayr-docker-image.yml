@@ -16,8 +16,12 @@ jobs:
 
     - name: Add Configuration Files
       run: |
-        sed -i "15a COPY ./release/config/ /etc/XrayR/" ./Dockerfile
-        sed -i "16a COPY ./release/config/config.yml.example /etc/XrayR/config.yml" ./Dockerfile
+        sed -i "17a COPY ./release/config/config.yml.example /etc/XrayR/config.yml" ./Dockerfile
+        sed -i "18a COPY ./release/config/custom_inbound.json /etc/XrayR/custom_inbound.json" ./Dockerfile
+        sed -i "19a COPY ./release/config/custom_outbound.json /etc/XrayR/custom_outbound.json" ./Dockerfile
+        sed -i "20a COPY ./release/config/dns.json /etc/XrayR/dns.json" ./Dockerfile
+        sed -i "21a COPY ./release/config/route.json /etc/XrayR/route.json" ./Dockerfile
+        sed -i "22a COPY ./release/config/rulelist /etc/XrayR/rulelist" ./Dockerfile
 
     - name: Set up QEMU
       uses: docker/setup-qemu-action@v3
@@ -38,4 +42,4 @@ jobs:
         platforms: linux/amd64
         push: true
         file: ./Dockerfile
-        tags: vkarz/xrayr:${{ github.event.inputs.tags }}
+        tags: vkarz/xrayr:${{ github.event.inputs.tags }},vkarz/xrayr:latest
