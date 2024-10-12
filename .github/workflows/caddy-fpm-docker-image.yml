@@ -39,4 +39,4 @@ jobs:
         platforms: linux/amd64
         push: true
         file: ./nv2board/Dockerfile
-        tags: vkarz/v2board:${{ github.event.inputs.tags }},vkarz/v2board:latest
+        tags: vkarz/v2board:caddy-fpm-${{ github.event.inputs.tags }},vkarz/v2board:caddy-fpm-latest
