@@ -4,7 +4,8 @@ on:
   workflow_dispatch:
     inputs:
       tags:
-        descrption: 'input the docker tag'
+        description: 'input the docker tag'
+        required: true
 
 jobs:
   build:
